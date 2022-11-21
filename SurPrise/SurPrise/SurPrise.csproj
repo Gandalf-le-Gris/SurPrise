@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\PlugDetailPage.xaml.cs">
+      <DependentUpon>PlugDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ConsumptionPage.xaml.cs">
+      <DependentUpon>ConsumptionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlugManagerPage.xaml.cs">
+      <DependentUpon>PlugManagerPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

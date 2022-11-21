@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SurPrise.Views.PlugDetailPage"
+             xmlns:vm="clr-namespace:SurPrise.ViewModels"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:SurPrise.ViewModels"  
+             xmlns:model="clr-namespace:SurPrise.Models"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
+
+    <!--
+      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
+      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+    -->
+
+    <ContentPage.BindingContext>
+        <vm:PlugDetailViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Modifier" Clicked="EditPlug" Order="Secondary"></ToolbarItem>
+        <ToolbarItem Text="Supprimer" Clicked="DeletePlug" Order="Secondary"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout BackgroundColor="{StaticResource Light}" Spacing="0">
+        <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Green}" Spacing="10" Padding="0, 10, 10, 10" HorizontalOptions="FillAndExpand">
+            <BoxView BackgroundColor="{StaticResource Off}" WidthRequest="10" CornerRadius="0, 10, 0, 10"></BoxView>
+            
+            <StackLayout Spacing="0" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                <Label x:Name="Name" FontSize="Large" FontAttributes="Bold" TextColor="White"></Label>
+                <Label x:Name="Description" FontSize="Small" FontAttributes="Bold" TextColor="White"></Label>
+            </StackLayout>
+
+            <ImageButton Source="power.png" BackgroundColor="Transparent" HeightRequest="60" HorizontalOptions="End" Clicked="ToggleOnOff"></ImageButton>
+        </StackLayout>
+        
+        <ScrollView Padding="0, 10, 0, 10">
+            <StackLayout Spacing="10">
+                <StackLayout Spacing="0">
+                    <Frame BackgroundColor="{StaticResource LightGreen}" BorderColor="{StaticResource Green}" CornerRadius="10" Margin="10, 10" Padding="0" HasShadow="False">
+                        <microcharts:ChartView x:Name="dailyConsumption" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" HeightRequest="200"/>
+                    </Frame>
+                    <Label Text="Dernières 24h" TextColor="{StaticResource DarkGreen}" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+
+                <StackLayout Spacing="0">
+                    <Frame BackgroundColor="{StaticResource LightGreen}" BorderColor="{StaticResource Green}" CornerRadius="10" Margin="10, 10" Padding="0" HasShadow="False">
+                        <microcharts:ChartView x:Name="monthlyConsumption" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" HeightRequest="200"/>
+                    </Frame>
+                    <Label Text="Dernier mois" TextColor="{StaticResource DarkGreen}" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+    
+</ContentPage>

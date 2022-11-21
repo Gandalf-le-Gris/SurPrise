@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SurPrise.Views.ConsumptionPage"
+             xmlns:vm="clr-namespace:SurPrise.ViewModels"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:SurPrise.ViewModels"  
+             xmlns:model="clr-namespace:SurPrise.Models"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
+
+    <!--
+      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
+      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+    -->
+
+    <ContentPage.BindingContext>
+        <vm:ConsumptionViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout BackgroundColor="{StaticResource Light}">
+        <ScrollView Padding="0, 10">
+            <StackLayout Spacing="50">
+                <StackLayout Spacing="0">
+                    <Frame BackgroundColor="{StaticResource LightGreen}" BorderColor="{StaticResource Green}" CornerRadius="10" Margin="10, 10" Padding="0" HasShadow="False">
+                        <microcharts:ChartView x:Name="dailyConsumption" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" HeightRequest="200"/>
+                    </Frame>
+                    <Label Text="Dernières 24h" TextColor="{StaticResource DarkGreen}" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+
+                <StackLayout Spacing="0">
+                    <Frame BackgroundColor="{StaticResource LightGreen}" BorderColor="{StaticResource Green}" CornerRadius="10" Margin="10, 10" Padding="0" HasShadow="False">
+                        <microcharts:ChartView x:Name="monthlyConsumption" BackgroundColor="Transparent" VerticalOptions="CenterAndExpand" HeightRequest="200"/>
+                    </Frame>
+                    <Label Text="Dernier mois" TextColor="{StaticResource DarkGreen}" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+    
+</ContentPage>

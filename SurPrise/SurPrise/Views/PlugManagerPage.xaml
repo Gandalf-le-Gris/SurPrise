@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SurPrise.Views.PlugManagerPage"
+             xmlns:vm="clr-namespace:SurPrise.ViewModels"
+             xmlns:models="clr-namespace:SurPrise.Models"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="{Binding Title}">
+    
+    <ContentPage.BindingContext>
+        <vm:PlugManagerViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ajouter" Clicked="AddPlug" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Spacing="0" BackgroundColor="{StaticResource Light}">
+
+        <ScrollView Padding="0, 20">
+            <ListView x:Name="plugList" x:FieldModifier="public" VerticalScrollBarVisibility="Default" SelectionMode="None" RowHeight="90" VerticalOptions="FillAndExpand" ItemSelected="OpenPlugDetail" ItemsSource="{Binding Cells}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <models:CustomCell Title="{Binding Title}" Detail="{Binding Detail}"></models:CustomCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+
+    </StackLayout>
+
+</ContentPage>
