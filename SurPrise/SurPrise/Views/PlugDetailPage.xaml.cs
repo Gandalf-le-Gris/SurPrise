@@ -22,6 +22,7 @@ namespace SurPrise.Views
         private ChartEntry[] entriesDaily = new ChartEntry[24];
         private ChartEntry[] entriesMonthly = new ChartEntry[30];
 
+        // Indice de la prise considérée pour la récupération des données dans le module Settings
         private string _index = "0";
 
         public string Index
@@ -45,6 +46,7 @@ namespace SurPrise.Views
 
             Random rd = new Random();
 
+            // Génération de données aléatoires pour l'exemple
             for (int i = 0; i < entriesDaily.Length; i++) {
                 int value = rd.Next(0, 255);
                 //Color color = Color.FromRgb(.4 + Math.Floor(value / 2.0) / 255, .9 - Math.Floor(value / 2.0) / 255, .5);
@@ -59,6 +61,7 @@ namespace SurPrise.Views
             };
             }
 
+            // Affichage des données dans le graphique
             LineChart chart = new LineChart { Entries = entriesDaily };
             chart.BackgroundColor = SKColors.Transparent;
             chart.LabelColor = SKColor.Parse(((Color)Application.Current.Resources["DarkGreen"]).ToHex());
@@ -90,23 +93,27 @@ namespace SurPrise.Views
         {
             base.OnAppearing();
 
+            // Animation des graphiques sur ouverture de la page
             dailyConsumption.Chart.AnimateAsync(true);
             monthlyConsumption.Chart.AnimateAsync(true);
         }
 
+        // Bouton on/off
         public async void ToggleOnOff(object sender, EventArgs e)
         {
             ImageButton s = (ImageButton)sender;
             await s.ScaleTo(0.9, 75);
             await s.ScaleTo(1, 75);
+            statusColor.Color = statusColor.Color == (Color)Application.Current.Resources["On"] ? (Color)Application.Current.Resources["Off"] : (Color)Application.Current.Resources["On"];
         }
 
+        // Modification des nom et description de la prise
         public async void EditPlug(object sender, EventArgs e)
         {
             string name = await DisplayPromptAsync("Modifier la prise", "Nouveau nom :");
             bool ok;
             int i;
-            List<(string name, string desc, bool on)> plugs = Settings.PlugListContent;
+            List<(string name, string desc, bool on, Guid id)> plugs = Settings.PlugListContent;
             do
             {
                 ok = true;
@@ -142,6 +149,7 @@ namespace SurPrise.Views
             Description.Text = description;
         }
 
+        // Suppression de la prise de la mémoire de l'application
         public async void DeletePlug(object sender, EventArgs e)
         {
             bool ans = await DisplayAlert("Attention !", "Êtes-vous sûr de vouloir supprimer cette prise ?", "Oui", "Non");
@@ -151,6 +159,7 @@ namespace SurPrise.Views
                 list.RemoveAt(int.Parse(Index));
                 Settings.PlugListContent = list;
 
+                // Retour au plug manager
                 await Shell.Current.GoToAsync("..", true);
             }
         }

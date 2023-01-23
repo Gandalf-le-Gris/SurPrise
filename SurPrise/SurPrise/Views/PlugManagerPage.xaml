@@ -6,7 +6,11 @@
              xmlns:models="clr-namespace:SurPrise.Models"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              Title="{Binding Title}">
-    
+
+    <!-- 
+    Modèle XML de la page affichant la liste de toutes les prises    
+    -->
+
     <ContentPage.BindingContext>
         <vm:PlugManagerViewModel />
     </ContentPage.BindingContext>

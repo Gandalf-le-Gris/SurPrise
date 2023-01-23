@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Objet représentant une prise (obsolète)
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 

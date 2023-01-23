@@ -17,10 +17,12 @@ namespace SurPrise.ViewModels
             Title = "Mes prises";
             Cells = new ObservableCollection<CustomCell>();
 
+
+            // Actualisation graphique de la liste de prises en se basant sur le viewmodel pour stocker les données (MVVM)
             RefreshPlugList = new Command(() =>
             {
                 Cells.Clear();
-                foreach ((string name, string desc, _) in Settings.PlugListContent)
+                foreach ((string name, string desc, _, _) in Settings.PlugListContent)
                 {
                     CustomCell cell = new CustomCell
                     {

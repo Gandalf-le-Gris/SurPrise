@@ -1,4 +1,6 @@
-﻿using SurPrise.Services;
+﻿// Classe permettant de générer des cellules personnalisées avec de bons bindings pour la liste de prises dans le Plug Manager
+
+using SurPrise.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +10,7 @@ namespace SurPrise.Models
 {
     public class CustomCell : ViewCell
     {
+        // Attributs de classe
         readonly Label title, detail;
         readonly BoxView statusColor;
 
@@ -30,6 +33,7 @@ namespace SurPrise.Models
             set { SetValue(DetailProperty, value); }
         }
 
+        // Modification dynamique des informations depuis les bindings
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
@@ -41,6 +45,7 @@ namespace SurPrise.Models
             }
         }
 
+        // Construction de l'élément cellule
         public CustomCell()
         {
 
@@ -131,6 +136,7 @@ namespace SurPrise.Models
             };
         }
 
+        // Animation de clic (enfoncement)
         public async void ClickAnimation(object sender, EventArgs e)
         {
             View s = (View)sender;
@@ -140,11 +146,13 @@ namespace SurPrise.Models
             parent.SelectedItem = this;
         }
 
+        // Bouton on/off
         public async void ToggleOnOff(object sender, EventArgs e)
         {
             ImageButton s = (ImageButton)sender;
             await s.ScaleTo(0.9, 75);
             await s.ScaleTo(1, 75);
+            statusColor.Color = statusColor.Color == (Color)Application.Current.Resources["On"] ? (Color)Application.Current.Resources["Off"] : (Color)Application.Current.Resources["On"];
         }
     }
 }

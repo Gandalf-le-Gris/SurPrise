@@ -11,6 +11,7 @@ namespace SurPrise
         public AppShell()
         {
             InitializeComponent();
+            // Routes pour empiler et dépiler les pages de détail des prises
             Routing.RegisterRoute(nameof(PlugDetailPage), typeof(PlugDetailPage));
             Routing.RegisterRoute(nameof(PlugManagerPage), typeof(PlugManagerPage));
         }

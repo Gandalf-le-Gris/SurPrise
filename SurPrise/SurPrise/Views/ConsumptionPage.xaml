@@ -8,6 +8,10 @@
              xmlns:model="clr-namespace:SurPrise.Models"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
 
+    <!-- 
+    Modèle XML de la page de consommation globale de toutes les prises (2e onglet)
+    -->
+
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
       https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings

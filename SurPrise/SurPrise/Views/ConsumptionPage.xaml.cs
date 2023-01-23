@@ -23,6 +23,8 @@ namespace SurPrise.Views
         {
             InitializeComponent();
 
+            // Génération de données aléatoires pour l'exemple
+
             Random rd = new Random();
 
             for (int i = 0; i < entriesDaily.Length; i++) {
@@ -39,12 +41,14 @@ namespace SurPrise.Views
             };
             }
 
+            // Tracé des valeurs
             LineChart chart = new LineChart { Entries = entriesDaily };
             chart.BackgroundColor = SKColors.Transparent;
             chart.LabelColor = SKColor.Parse(((Color)Application.Current.Resources["DarkGreen"]).ToHex());
             chart.LabelTextSize = (float)Device.GetNamedSize(NamedSize.Large, typeof(Label));
             dailyConsumption.Chart = chart;
 
+            // Nouvelle génération de données aléatoires
             for (int i = 0; i < entriesMonthly.Length; i++)
             {
                 int value = rd.Next(0, 255);
@@ -59,6 +63,7 @@ namespace SurPrise.Views
                 };
             }
 
+            // Tracé des nouvelles données
             LineChart chart2 = new LineChart { Entries = entriesMonthly };
             chart2.BackgroundColor = SKColors.Transparent;
             chart2.LabelColor = SKColor.Parse(((Color)Application.Current.Resources["DarkGreen"]).ToHex());
@@ -70,6 +75,7 @@ namespace SurPrise.Views
         {
             base.OnAppearing();
 
+            // Animation des graphiques sur changement d'onglet
             dailyConsumption.Chart.AnimateAsync(true);
             monthlyConsumption.Chart.AnimateAsync(true);
         }

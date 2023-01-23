@@ -1,4 +1,6 @@
-﻿using SurPrise.Models;
+﻿// Stockage des prises (obsolète)
+
+using SurPrise.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

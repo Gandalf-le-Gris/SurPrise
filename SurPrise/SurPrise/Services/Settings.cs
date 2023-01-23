@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿// Stockage persistant des informations par l'application avec le plugin Settings
+
+using Newtonsoft.Json;
 using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 using System;
@@ -19,21 +21,23 @@ namespace SurPrise.Services
 
         #region Setting Constants
 
-        private const string PlugListContentKey = "playlistContent";
+        // Clé et valeur par défaut de la liste de prises, stockée en format JSON
+        private const string PlugListContentKey = "pluglistContent";
         private static readonly string PlugListContentDefault = "";
 
         #endregion
 
-        public static List<(string name, string desc, bool on)> PlugListContent
+        // Getter et setter de la liste de prises
+        public static List<(string name, string desc, bool on, Guid id)> PlugListContent
         {
             get
             {
                 string value = AppSettings.GetValueOrDefault(PlugListContentKey, PlugListContentDefault);
-                List<(string name, string desc, bool on)> map;
+                List<(string name, string desc, bool on, Guid id)> map;
                 if (string.IsNullOrEmpty(value))
-                    map = new List<(string name, string desc, bool on)>();
+                    map = new List<(string name, string desc, bool on, Guid id)>();
                 else
-                    map = JsonConvert.DeserializeObject<List<(string name, string desc, bool on)>>(value);
+                    map = JsonConvert.DeserializeObject<List<(string name, string desc, bool on, Guid id)>>(value);
                 return map;
             }
             set

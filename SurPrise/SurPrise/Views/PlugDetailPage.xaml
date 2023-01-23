@@ -8,6 +8,10 @@
              xmlns:model="clr-namespace:SurPrise.Models"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms">
 
+    <!-- 
+    Modèle XML de la page relative aux détails d'une prise quelconque    
+    -->
+
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
       https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
@@ -24,7 +28,7 @@
 
     <StackLayout BackgroundColor="{StaticResource Light}" Spacing="0">
         <StackLayout Orientation="Horizontal" BackgroundColor="{StaticResource Green}" Spacing="10" Padding="0, 10, 10, 10" HorizontalOptions="FillAndExpand">
-            <BoxView BackgroundColor="{StaticResource Off}" WidthRequest="10" CornerRadius="0, 10, 0, 10"></BoxView>
+            <BoxView x:Name="statusColor" BackgroundColor="{StaticResource Off}" WidthRequest="10" CornerRadius="0, 10, 0, 10"></BoxView>
             
             <StackLayout Spacing="0" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                 <Label x:Name="Name" FontSize="Large" FontAttributes="Bold" TextColor="White"></Label>

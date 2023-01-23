@@ -19,6 +19,7 @@ namespace SurPrise
 
         protected override void OnStart()
         {
+            // Possibilité de connexion par défaut à toutes les prises connues pour obtenir les informations accumulées ici
         }
 
         protected override void OnSleep()
